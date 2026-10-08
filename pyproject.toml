@@ -1,0 +1,39 @@
+[project]
+name = "cv_edu_backbone"
+version = "2026.0"
+description = ""
+authors = [{ name = "Your Name", email = "you@example.com" }]
+license = { text = "CC0 1.0 Universal" }
+requires-python = ">=3.14"
+dependencies = [
+    "matplotlib>=3.11.2",
+    "numpy>=2.5.3",
+    "torch",
+    "torchvision>=0.29.1",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.ruff]
+exclude = [
+    ".git",
+    ".hg",
+    ".mypy_cache",
+    ".tox",
+    ".venv",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "env",
+    "venv",
+]
+
+line-length = 120
+indent-width = 4
+target-version = "py314"
+
+
+[tool.ruff.lint.per-file-ignores]
+"notebooks_src/*" = ["T", "B008", "FBT003", "F811", "F841"]

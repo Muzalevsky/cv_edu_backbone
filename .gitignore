@@ -1,0 +1,24 @@
+**/.ipynb_checkpoints
+.vscode
+.idea
+**/__pycache__
+
+venv[0-9]*
+/.venv
+# Generated from uv
+requirements.txt
+
+generated
+
+notebooks_src/*
+!notebooks_src/*.ipynb
+!notebooks_src/kaggle.json
+*.zip
+*.pth
+*.txt
+/ngrok
+
+/.env
+/keys
+
+*:Zone.Identifier

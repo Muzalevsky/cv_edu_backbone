@@ -1,0 +1,44 @@
+repos:
+  - repo: https://github.com/kynan/nbstripout
+    rev: 0.7.1
+    hooks:
+      - id: nbstripout
+        # Avoid overwriting of generated notebooks
+        exclude: ^courses/[\d]{4}/release
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+    hooks:
+      # https://pre-commit.com/hooks.html
+      - id: check-yaml
+      - id: check-toml
+      - id: check-json
+      - id: end-of-file-fixer
+        exclude: ^courses|^assets
+      - id: trailing-whitespace
+        exclude: ^assets
+      - id: check-added-large-files
+        args: ["--maxkb=600"]
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: check-merge-conflict
+      - id: check-executables-have-shebangs
+      - id: check-case-conflict
+
+  - repo: local
+    hooks:
+      - id: isort
+        name: isort
+        entry: uv run isort --settings-path pyproject.toml
+        types: [python]
+        language: system
+
+      # Source: https://github.com/astral-sh/ruff-pre-commit/blob/main/.pre-commit-hooks.yaml
+      - id: ruff
+        name: ruff
+        entry: uv run ruff check --force-exclude
+        require_serial: true
+        language: python
+        types_or: [python, pyi, jupyter]
+        args: ["--fix"]
+        exclude: ^courses/
