@@ -10,9 +10,6 @@ requirements.txt
 
 generated
 
-notebooks_src/*
-!notebooks_src/*.ipynb
-!notebooks_src/kaggle.json
 *.zip
 *.pth
 *.txt
